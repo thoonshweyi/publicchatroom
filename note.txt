@@ -1,0 +1,162 @@
+// https://firebase.google.com/ > Docs > Overview > Firebase fundamentals > Web icon > Available libraries documentation > Click  "Available Firebase JS SDKs (from the CDN)"
+
+// npm init or npm init -y
+// npm install firebase     or      npm install firebase@latest
+// npm install express      or      npm install express@latest
+
+=>How to use Vite
+1.Install 
+     npm install --save-dev vite@latest
+
+2.Create a new file as vite.config.js
+     import {defineConfig} from "vite";
+
+     export default defineConfig({
+          root: './src',
+          build:{
+               outDir: "../dist" // define the output directory for to build files
+          }
+     });
+
+3.Update package.json
+     "scripts": {
+          "test": "echo \"Error: no test specified\" && exit 1",
+          "start": "node server.js",
+          "dev": "vite",
+          "build": "vite build"
+     },
+4.Run Build the app for production
+     npm run build
+5.Run Vite in development server
+     npm run dev
+
+For Vite Server 
+     npm run dev
+     http://localhost:5173/
+
+For Express Server 
+     =In server.js 
+          exapp.use(express.static('dist')); 
+
+     npm run start 
+     http://localhost:8001/
+
+
+=>Direct Changes Effect 
+     => Root Folder 
+          src > index.html
+          ****Vite reload index.html file after saving Changes and instant effect 
+          Experss do not recongnize changes immediately. npm run build.
+
+     => Public Folder 
+          dist > index.html
+          Vite do not respond to any changes.                    
+          ****Express don't need to reaload to take effect
+
+
+     Vite watch root folder 
+     Express work on public folder
+
+
+
+Why is the parameter optional? getFirestore()
+Single App Scenario: In most projects, you initialize only one Firebase app. The getFirestore() function is designed to automatically use this default app, making the parameter optional.
+Multiple App Scenario: If you are working with multiple Firebase apps, passing the app parameter ensures Firestore operations are linked to the correct app.
+
+
+-----------------------------------------------
+=> => How to install Tailwind Css
+
+1.Install Tailwind CSS
+     https://tailwindcss.com/docs/installation/using-postcss
+
+
+     npm install -D tailwindcss@3 postcss autoprefixer
+     npx tailwindcss init
+
+2.Add Tailwind to your PostCSS configuration
+     create postcss.config.js manually (Note: do no forgot to export as ES6)
+     export default {
+          plugins: {
+               tailwindcss: {},
+               autoprefixer: {},
+          }
+     }
+
+3. Configure your template paths
+     module.exports = {
+     content: ["./src/**/*.{html,js}"],
+     theme: {
+     extend: {},
+     },
+     plugins: [],
+     }
+
+4. Add the Tailwind directives to your CSS
+create a css file located to (eg. src/css/main.css)
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+5.include css link 
+        <link href="./css/main.css" type="text/css" rel="stylesheet" >
+
+
+npm run build 
+npm run dev
+-----------------------------------------------
+=> => How to install Date-fns 
+1. Install 
+https://date-fns.org/docs/Getting-Started
+npm install date-fns --save
+
+
+2. import in src/main.js or src/js/uielement.js
+import { format, compareAsc } from "date-fns";
+
+-----------------------------------------------
+=> Install Fontawesome 6
+
+1. Install 
+npm install @fortawesome/fontawesome-free
+
+2. import in src/main.js or src/js/authsignin.js and src/js/app.js
+import '@fortawesome/fontawesome-free/css/all.min.css'
+-----------------------------------------------
+=> Install Express
+     npm install express      or        npm install express@latest
+     nodemon server.js
+
+     => import 
+     import express from "express"
+
+-----------------------------------------------
+=>Enable Email/Password Authentication
+Make sure you have enable Email/Password authentication in your Firebase Console.
+
+Authentication > Sign-in Method 
+Ensure Email/Password is enabled.
+Save the changes
+
+=>Enable Google Sign-in in Firebase Console 
+Enable Google under the list of providers 
+
+Public-facing name for project = your project index
+Support email for project = your firebase gmail address
+Save the changes
+-----------------------------------------------
+=> Customize the Password Reset Email Template 
+you can customize the password reset email link to redirected user to a specific page in your app.
+
+Authentication > Templates > Password reset > click Edit pen
+
+**If reset password for gmail acc user 
+-Firebase Authentication users are changed method to Email/Password not Gmail
+-Login with Gmail again will show dual methods.
+-----------------------------------------------
+
+=> Deploy on Cloud Server
+1. your project need Repo public/private Repo public to Github
+
+2. 
