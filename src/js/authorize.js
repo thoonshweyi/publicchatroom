@@ -22,7 +22,7 @@ export function Authorize(){
                     photoURL: defaultprofileimg
                }).then(() => {
                     // set name to localstprage
-                    setLocalName(fullname);
+                    setLocalName(user);
                     
 
                     // Redirect to index.html

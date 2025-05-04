@@ -95,7 +95,7 @@ export function Chatroom(room,username){
           }
           ,15000)
      }
-     deleteAllMessages()
+     // deleteAllMessages()
 
      return {addChat,getChats,updateChatroom,updateUsername};
 }
